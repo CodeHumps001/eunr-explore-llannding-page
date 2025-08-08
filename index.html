@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome to UENR – Explore, Learn, Belong</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <style>
+    /* Loader Styles */
+    #loader-bg {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #006b3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.5s;
+    }
+    #loader-bg img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1.5rem;
+      animation: pulseLogo 1.5s infinite;
+    }
+    @keyframes pulseLogo {
+      0% { transform: scale(1);}
+      50% { transform: scale(1.12);}
+      100% { transform: scale(1);}
+    }
+    #loader-bg h2 {
+      color: #ffd700;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    /* Remove space between map and footer */
+    #map {
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    footer.footer {
+      margin-top: 0;
+      padding-top: 0;
+    }
+    /* Fast fade-in animation */
+    .fast-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fastFadeIn 0.5s ease-out forwards;
+    }
+    @keyframes fastFadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    /* Modal image background */
+    #imageModal .modal-content {
+      background: #000;
+      border: none;
+      box-shadow: none;
+    }
+    /* Fast fade-in animation for initial state */
+    .fast-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    /* Modal image background */
+    #imageModal .modal-content {
+      background: #000;
+      border: none;
+      box-shadow: none;
+    }
+    /* Remove margin between navbar and hero */
+    .navbar + .hero {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loader -->
+  <div id="loader-bg">
+    <img src="./images/logo.png" alt="UENR Logo" />
+    <h2>Explore UENR<br><span style="font-size:1.1rem;font-weight:400;">Discover, Learn, Belong</span></h2>
+  </div>
+
+  <!-- Navbar/Header -->    
+  <nav class="navbar navbar-expand-lg navbar-dark p-0 sticky-navbar" style="background:#000; margin-bottom:0;">
+    <div class="container d-flex justify-content-between align-items-center py-2 px-3">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="./images/logo.png" alt="UENR Logo" width="40" height="40" class="me-2">
+        <span class="fw-bold text-decoration-none" style="color:#ffd700;">Explore UENR</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
+          <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#campus-highlights">Cultural Life</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#map">Map</a></li>
+          <li class="nav-item">
+            <a class="btn btn-warning px-4 py-2 ms-2" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section: Remove top margin/padding -->
+  <section class="hero w-100 fast-fade-in" style="background:#000; margin-top:0; padding-top:0;">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url('./images/uenr-campus-1.jpg'); min-height:60vh; background-size:cover; background-position:center; position:relative;">
+          <div class="hero-overlay"></div>
+          <div class="position-relative z-2 text-center py-5 w-100">
+            <img src="./images/logo.png" alt="UENR Logo" width="200" height="200" class="mb-3 img-fluid fast-fade-in">
+            <h1 class="hero-title text-white fast-fade-in">Explore UENR: Discover, Learn, Experience</h1>
+            <p class="hero-subtitle text-white fast-fade-in">Welcome to the University of Energy and Natural Resources, Sunyani.<br>Your journey to knowledge, innovation, and adventure starts here.</p>
+            <a href="#plan-trip" class="btn btn-warning btn-lg shadow fast-fade-in">Plan Your Campus Tour</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('./images/uenr-campus-2.jpg'); min-height:60vh; background-size:cover; background-position:center; position:relative;">
+          <div class="hero-overlay"></div>
+          <div class="position-relative z-2 text-center py-5 w-100">
+            <img src="./images/logo.png" alt="UENR Logo" width="200" height="200" class="mb-3 img-fluid animate__animated animate__fadeInDown">
+            <h1 class="hero-title text-white animate__animated animate__fadeInUp">Innovation & Sustainability</h1>
+            <p class="hero-subtitle text-white animate__animated animate__fadeInUp">UENR is committed to sustainable energy, research, and environmental stewardship.</p>
+            <a href="#gallery" class="btn btn-warning btn-lg shadow animate__animated animate__fadeInUp">See Campus Life</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('./images/uenr-campus-3.jpg'); min-height:60vh; background-size:cover; background-position:center; position:relative;">
+          <div class="hero-overlay"></div>
+          <div class="position-relative z-2 text-center py-5 w-100">
+            <img src="./images/logo.png" alt="UENR Logo" width="200" height="200" class="mb-3 img-fluid animate__animated animate__fadeInDown">
+            <h1 class="hero-title text-white animate__animated animate__fadeInUp">Vibrant Student Community</h1>
+            <p class="hero-subtitle text-white animate__animated animate__fadeInUp">Join a diverse, welcoming community and make lifelong friends at UENR.</p>
+            <a href="#cultural" class="btn btn-warning btn-lg shadow animate__animated animate__fadeInUp">Experience Culture</a>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Campus Highlights Section -->
+  <section class="container py-5 fast-fade-in" id="campus-highlights">
+    <h2 class="section-title fast-fade-in">Campus Highlights</h2>
+    <div class="row g-4 justify-content-center text-center fast-fade-in">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/libblo.webp" alt="Main Library" class="img-fluid mb-3 fast-fade-in">
+          <h5 class="card-title fast-fade-in">Main Library</h5>
+          <p class="card-text fast-fade-in">A modern hub for research, study, and collaboration, open to all students and staff.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto fast-fade-in">See More</a>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/complex.jpg" alt="Recess Building" class="img-fluid mb-3" style="width:100%;max-width:200px;object-fit:cover;">
+          <h5 class="card-title">Recess Building</h5>
+          <p class="card-text">The "Recess" building at UENR in Ghana is a student center separate from academic facilities, offering spaces for relaxation, recreation, and student activities.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto">See More</a>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/botany.jpg" alt="Botanical Gardens" class="img-fluid mb-3" style="width:100%;max-width:200px;object-fit:cover;">
+          <h5 class="card-title">Botanical Gardens</h5>
+          <p class="card-text">A peaceful green space for study, relaxation, and environmental research.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto">See More</a>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/sports.jpg" alt="Sports Arena" class="img-fluid mb-3" style="width:100%;max-width:200px;object-fit:cover;">
+          <h5 class="card-title">Sports Arena</h5>
+          <p class="card-text">Facilities for football, athletics, and other sports, promoting fitness and teamwork.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto">See More</a>
+        </div>
+      </div>
+      <!-- Hospitality Laboratory Card -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/hospitality.jpg" alt="Hospitality Laboratory" class="img-fluid mb-3" style="width:100%;max-width:200px;object-fit:cover;">
+          <h5 class="card-title">Hospitality Laboratory</h5>
+          <p class="card-text">A modern facility for practical training in hospitality and culinary arts, supporting hands-on learning and innovation.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto">See More</a>
+        </div>
+      </div>
+      <!-- Admin Block Card (restored) -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm p-3 d-flex flex-column align-items-center fast-fade-in">
+          <img src="./images/admin.jpg" alt="Admin Block" class="img-fluid mb-3" style="width:100%;max-width:200px;object-fit:cover;">
+          <h5 class="card-title">Admin Block</h5>
+          <p class="card-text">The administrative heart of UENR, supporting students and staff in all academic matters.</p>
+          <a href="#gallery" class="btn btn-warning mt-auto">See More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cultural Life Section -->
+  <section class="container py-5 fast-fade-in">
+    <h2 class="section-title text-center mb-5 fast-fade-in">Cultural Life at UENR</h2>
+    <div class="row g-4 text-center fast-fade-in">
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/cutural-day.jpg" alt="Cultural Day" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Cultural Day</h5>
+            <p class="card-text fast-fade-in">A vibrant celebration of Ghanaian and African culture, featuring music, dance, and traditional attire.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/student-club.webp" alt="Student Clubs" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Student Clubs</h5>
+            <p class="card-text fast-fade-in">Join a variety of clubs and societies to connect, learn, and grow with fellow students.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/dance.webp" alt="Traditional Music & Dance" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Traditional Music & Dance</h5>
+            <p class="card-text fast-fade-in">Experience the rhythm and energy of UENR’s music and dance troupes at campus events.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/food.jpg" alt="Food Fair" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Food Fair</h5>
+            <p class="card-text fast-fade-in">Taste a variety of local and international dishes prepared by students and staff.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/art.jpg" alt="Art Exhibition" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Art Exhibition</h5>
+            <p class="card-text fast-fade-in">Discover creative works by UENR students at annual art and photography exhibitions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 fast-fade-in">
+        <div class="card h-100 shadow-sm overflow-hidden fast-fade-in">
+          <div style="height: 250px; overflow: hidden;">
+            <img src="./images/community.jpg" alt="Community Service" class="img-fluid w-100 fast-fade-in" style="height: 100%; object-fit: cover;" />
+          </div>
+          <div class="card-body fast-fade-in">
+            <h5 class="card-title fast-fade-in">Community Service</h5>
+            <p class="card-text fast-fade-in">Participate in outreach programs and make a positive impact beyond campus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section: UENR Focused -->
+  <section id="gallery" class="container py-5 fast-fade-in">
+    <h2 class="section-title fast-fade-in">UENR Gallery</h2>
+    <div class="row g-4 fast-fade-in">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/main.jpg" class="img-fluid rounded-top fast-fade-in" alt="UENR Main Campus">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Main Campus</h6>
+            <p class="card-text fast-fade-in">The heart of UENR, home to academic buildings and student life.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/lib.jpg" class="img-fluid rounded-top fast-fade-in" alt="UENR Library">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Library</h6>
+            <p class="card-text fast-fade-in">A modern space for research, study, and collaboration.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/lab.jpeg" class="img-fluid rounded-top fast-fade-in" alt="Science Lab">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Science Lab</h6>
+            <p class="card-text fast-fade-in">State-of-the-art labs for hands-on learning and innovation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/hostel.jpg" class="img-fluid rounded-top fast-fade-in" alt="Student Hostel">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Student Hostel</h6>
+            <p class="card-text fast-fade-in">Comfortable accommodation for students from all backgrounds.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/sports.jpg" class="img-fluid rounded-top fast-fade-in" alt="Sports Arena">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Sports Arena</h6>
+            <p class="card-text fast-fade-in">Facilities for football, athletics, and other sports.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/botany.jpg" class="img-fluid rounded-top fast-fade-in" alt="Botanical Gardens">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Botanical Gardens</h6>
+            <p class="card-text fast-fade-in">A peaceful green space for study and relaxation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/event.jpg" class="img-fluid rounded-top fast-fade-in" alt="Campus Event">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Campus Event</h6>
+            <p class="card-text fast-fade-in">Celebrating student life, culture, and achievement at UENR.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3 fast-fade-in">
+        <div class="card h-100 shadow-sm fast-fade-in">
+          <img src="./images/admin.jpg" class="img-fluid rounded-top fast-fade-in" alt="Admin Block">
+          <div class="card-body fast-fade-in">
+            <h6 class="card-title fast-fade-in">Admin Block</h6>
+            <p class="card-text fast-fade-in">The administrative heart of UENR, supporting students and staff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section: UENR Focused -->
+  <section id="faq" class="py-5 container fast-fade-in">
+    <h2 class="section-title fast-fade-in">Frequently Asked Questions</h2>
+    <div class="accordion w-100 fast-fade-in" id="faqAccordion">
+      <div class="accordion-item fast-fade-in mb-3" style="margin-bottom:1.5rem;">
+        <h2 class="accordion-header" id="faq1">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+            How do I apply for admission to UENR?
+          </button>
+        </h2>
+        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <strong>Online Application:</strong> Visit the <a href="https://uenr.edu.gh/admissions" target="_blank">UENR Admissions Portal</a> and follow the step-by-step instructions to complete your application. You will need to upload your academic certificates, transcripts, and other required documents.<br><br>
+            <strong>Requirements:</strong> Ensure you meet the minimum entry requirements for your chosen program. These may include WASSCE/SSSCE results, relevant certificates, and in some cases, an entrance examination.<br><br>
+            <strong>Deadlines:</strong> Application periods are announced on the university website. Apply early to avoid missing out.<br><br>
+            <strong>Support:</strong> For help, contact the admissions office at <a href="mailto:admissions@uenr.edu.gh">admissions@uenr.edu.gh</a> or call +233 35 202 6477.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item fast-fade-in mb-3" style="margin-bottom:1.5rem;">
+        <h2 class="accordion-header" id="faq2">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+            What programs are offered at UENR?
+          </button>
+        </h2>
+        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <strong>Undergraduate Programs:</strong> UENR offers degrees in Renewable Energy Engineering, Computer Science, Electrical Engineering, Natural Resources Management, Environmental Science, and more.<br><br>
+            <strong>Postgraduate Programs:</strong> Master's and PhD programs are available in select fields such as Sustainable Energy, Environmental Management, and Applied Sciences.<br><br>
+            <strong>Short Courses:</strong> The university also runs certificate and diploma courses for professional development.<br><br>
+            <strong>Full List:</strong> Visit the <a href="https://uenr.edu.gh/academics/programmes/" target="_blank">Academic Programmes Page</a> for a comprehensive list.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item fast-fade-in mb-3" style="margin-bottom:1.5rem;">
+        <h2 class="accordion-header" id="faq3">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+            Is accommodation available for students?
+          </button>
+        </h2>
+        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <strong>On-Campus Hostels:</strong> UENR provides secure and comfortable hostels for both male and female students. Facilities include study areas, internet access, and 24/7 security.<br><br>
+            <strong>Off-Campus Options:</strong> There are approved private hostels near campus. The university assists students in finding suitable accommodation.<br><br>
+            <strong>Application:</strong> Hostel spaces are limited and allocated on a first-come, first-served basis. Apply for accommodation as soon as you receive admission.<br><br>
+            <strong>Support:</strong> For details, contact the hostel manager at <a href="mailto:hostels@uenr.edu.gh">hostels@uenr.edu.gh</a>.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item fast-fade-in mb-3" style="margin-bottom:1.5rem;">
+        <h2 class="accordion-header" id="faq4">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+            What facilities are available on campus?
+          </button>
+        </h2>
+        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <strong>Academic Facilities:</strong> Modern lecture halls, science and computer laboratories, and a well-equipped library.<br><br>
+            <strong>Sports & Recreation:</strong> Sports arena, football fields, basketball courts, and fitness centers.<br><br>
+            <strong>Student Life:</strong> Botanical gardens, cafeterias, student clubs, and cultural event spaces.<br><br>
+            <strong>Technology:</strong> Free Wi-Fi zones, e-learning platforms, and IT support.<br><br>
+            <strong>Health & Safety:</strong> Campus clinic, security services, and counseling centers.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item fast-fade-in mb-3" style="margin-bottom:1.5rem;">
+        <h2 class="accordion-header" id="faq5">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+            How can I contact the university for more information?
+          </button>
+        </h2>
+        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+          <div class="accordion-body">
+            <strong>Email:</strong> <a href="mailto:info@uenr.edu.gh">info@uenr.edu.gh</a><br>
+            <strong>Phone:</strong> +233 (0) 3520 27052 / +233 35 202 6477<br>
+            <strong>Address:</strong> University of Energy and Natural Resources, Sunyani, Ghana<br><br>
+            <strong>Social Media:</strong> 
+            <a href="https://www.facebook.com/uenr.gh/" target="_blank">Facebook</a>, 
+            <a href="https://www.instagram.com/uenr_official/" target="_blank">Instagram</a>, 
+            <a href="https://twitter.com/uenr_official" target="_blank">Twitter</a><br><br>
+            <strong>Website:</strong> <a href="https://uenr.edu.gh/" target="_blank">uenr.edu.gh</a><br>
+            <strong>Office Hours:</strong> Monday to Friday, 8:00am – 5:00pm
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section with Grid Layout -->
+  <section class="py-5 bg-light fast-fade-in" id="contact">
+    <div class="container fast-fade-in">
+      <div class="row align-items-center g-5 fast-fade-in">
+        <div class="col-12 col-md-6 fast-fade-in">
+          <h2 class="mb-4 fast-fade-in">Get in Touch with UENR</h2>
+          <p class="mb-3 fast-fade-in">Have questions, need support, or want to visit? Reach out to us — we’re happy to help.</p>
+          <ul class="list-unstyled mb-4 fast-fade-in">
+            <li><strong>Email:</strong> <a href="mailto:info@uenr.edu.gh">info@uenr.edu.gh</a></li>
+            <li><strong>Phone:</strong> +233 35 202 6477</li>
+            <li><strong>Location:</strong> Sunyani, Ghana</li>
+          </ul>
+          <img src="./images/campus.jpg" alt="UENR Campus" class="img-fluid rounded shadow fast-fade-in" style="max-height: 400px; object-fit: cover; width: 100%;">
+        </div>
+        <div class="col-12 col-md-6 fast-fade-in">
+          <div class="p-4 bg-white rounded shadow fast-fade-in">
+            <h3 class="mb-4 text-dark fast-fade-in">Send Us a Message</h3>
+            <form action="mailto:info@uenr.edu.gh" method="post" enctype="text/plain" class="text-dark fast-fade-in">
+              <div class="mb-3">
+                <label for="name" class="form-label text-dark">Your Name</label>
+                <input type="text" class="form-control" id="name" name="Name" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label text-dark">Your Email</label>
+                <input type="email" class="form-control" id="email" name="Email" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label text-dark">Your Message</label>
+                <textarea class="form-control" id="message" rows="5" name="Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section: UENR Students -->
+  <section class="py-5 w-100 fast-fade-in">
+    <h2 class="section-title fast-fade-in">What Our Students Say</h2>
+    <div id="testimonialCarousel" class="carousel slide fast-fade-in" data-bs-ride="carousel">
+      <div class="carousel-inner fast-fade-in">
+        <div class="carousel-item active fast-fade-in">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 text-center">
+              <h6 class="fw-bold mb-1">Kwame Mensah</h6>
+              <div class="mb-2 text-warning">★★★★★</div>
+              <p class="fst-italic">
+                “Studying Renewable Energy Engineering at UENR has been a life-changing experience. The faculty encourages innovation and hands-on learning, 
+                and I’ve had the chance to work on real-world sustainability projects. The friendships and mentorship I've gained are invaluable.”
+              </p>
+              <small class="text-muted">Course: BSc Renewable Energy Engineering | Submitted: April 2025</small>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item animate__animated animate__fadeInUp" data-aos-delay="100">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 text-center">
+              <h6 class="fw-bold mb-1">Ama Boateng</h6>
+              <div class="mb-2 text-warning">★★★★★</div>
+              <p class="fst-italic">
+                “As a Computer Science student, I've enjoyed every bit of the tech culture at UENR. From coding bootcamps to hackathons, 
+                there are always opportunities to grow. The lecturers are approachable and the environment encourages creativity and teamwork.”
+              </p>
+              <small class="text-muted">Course: BSc Computer Science | Submitted: March 2025</small>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item animate__animated animate__fadeInUp" data-aos-delay="200">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 text-center">
+              <h6 class="fw-bold mb-1">Simon Obeng</h6>
+              <div class="mb-2 text-warning">★★★★☆</div>
+              <p class="fst-italic">
+                “UENR’s facilities are impressive, especially the modern laboratories and library resources. I’ve had a great time studying Electrical Engineering here, 
+                and I appreciate how the university balances academics with extracurricular activities.”
+              </p>
+              <small class="text-muted">Course: BSc Electrical Engineering | Submitted: February 2025</small>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item animate__animated animate__fadeInUp" data-aos-delay="300">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 text-center">
+              <h6 class="fw-bold mb-1">Linda Osei</h6>
+              <div class="mb-2 text-warning">★★★★★</div>
+              <p class="fst-italic">
+                “Being part of the Environmental Science program has opened my eyes to global challenges and solutions. The university's support for student-led 
+                initiatives like clean-up campaigns and conservation drives is truly inspiring.”
+              </p>
+              <small class="text-muted">Course: BSc Environmental Science | Submitted: January 2025</small>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item animate__animated animate__fadeInUp" data-aos-delay="400">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6 text-center">
+              <h6 class="fw-bold mb-1">Samuel Appiah</h6>
+              <div class="mb-2 text-warning">★★★★★</div>
+              <p class="fst-italic">
+                “As a Mechanical Engineering student, I’ve developed both technical and leadership skills at UENR. The focus on sustainability and practical experience 
+                makes learning deeply rewarding. The career support services are also top-notch.”
+              </p>
+              <small class="text-muted">Course: BSc Mechanical Engineering | Submitted: December 2024</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- School Location Map -->
+  <section id="map" class="w-100 fast-fade-in" style="margin-bottom:0;padding-bottom:0;">
+    <h2 class="text-center my-4 fast-fade-in">Find Us Here</h2>
+    <div class="responsive-map fast-fade-in">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.4192163525035!2d-2.3468221847795968!3d7.351711876120772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0xfdac92a170803d7%3A0x6b48d01bcca4224a!2sUniversity%20of%20Energy%20and%20Natural%20Resources!5e0!3m2!1sen!2sgh!4v1698435678901!5m2!1sen!2sgh"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </section>
+  <!-- Footer with UENR Logo -->
+  <footer class="footer fast-fade-in" style="background:#006b3c;color:#fff;margin-top:0;padding-top:0;">
+    <div class="container fast-fade-in">
+      <div class="row fast-fade-in">
+        <div class="col-12 col-md-4 text-center text-md-start mb-4 mb-md-0">
+          <div class="d-flex align-items-center justify-content-center justify-content-md-start mb-2">
+            <img src="./images/logo.png" alt="UENR Logo" width="40" height="40" class="me-2">
+            <span class="fw-bold fs-5">University of Energy and Natural Resources</span>
+          </div>
+          <div class="small">&copy; 2024 UENR. All Rights Reserved.</div>
+        </div>
+        <div class="col-12 col-md-4 text-start mb-4 mb-md-0">
+          <div class="fw-bold mb-2">Quick Links</div>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#cultural">Cultural Life</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-4 text-start text-md-start">
+          <div class="fw-bold mb-2">Contact</div>
+          <div>University of Energy and Natural Resources, Sunyani, Ghana</div>
+          <div><a href="mailto:info@uenr.edu.gh">info@uenr.edu.gh</a></div>
+          <div>+233 (0) 3520 27052</div>
+          <div class="mt-2">
+            <a href="https://www.instagram.com/uenr_official/" target="_blank">Instagram</a> |
+            <a href="https://maps.google.com/?q=UENR,+Sunyani,+Ghana" target="_blank"> Google Maps</a> |
+            <a href="https://www.facebook.com/uenr.gh/" target="_blank"> Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Image Pop-up -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-body p-0">
+          <img id="modalImage" src="" alt="Full Size" class="w-100" style="max-height:80vh;object-fit:contain;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./script.js"></script>
+</body>
+</html>
