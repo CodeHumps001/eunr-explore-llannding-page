@@ -794,3 +794,65 @@ section.py-5.w-100.fast-fade-in h2 {
   font-size: 40px;
   cursor: pointer;
 }
+
+/* Other Views Section - fixed 3x2 layout */
+#other-views {
+  padding: 60px 0;
+}
+
+#other-views .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* exactly 3 per row */
+  gap: 20px;
+  justify-items: center;
+}
+
+#other-views .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 350px; /* keeps items from stretching too much */
+}
+
+#other-views .gallery-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Hover overlay */
+#other-views .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#other-views .gallery-item:hover .overlay {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  #other-views .gallery-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  #other-views .gallery-grid {
+    grid-template-columns: 1fr; /* 1 per row on small screens */
+  }
+}
